@@ -10,6 +10,8 @@ const TodoInput = ({value, onChange, onInsert})=>{
       onInsert();
     }
   }
+  console.log({value})
+  console.log({onInsert});
 
   return (
     <div className={cx('todo-input')}>

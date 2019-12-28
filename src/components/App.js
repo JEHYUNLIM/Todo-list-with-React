@@ -3,92 +3,89 @@ import PageTemplate from './PageTemplate';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
- const initialTodos = new Array(500).fill(0).map(
-     (foo, index)=>({id: index, text: `Todo ${index}`, done: false})
- );
+//  const initialTodos = new Array(5).fill(0).map(
+//      (foo, index)=>({id: index, text: `Todo ${index}`, done: false})
+//  );
 
-class App extends Component {
-    state = {
-        input: '',
-        todos: initialTodos
-    }
+const App = ({input, todos, id, handleChange, handleInsert, handleRemove, handleToggle}) =>{
 
-    id = 1;
-    getId = () =>{
-        return ++this.id;
-    }
+    // state = {
+    //     input: '',
+    //     todos: initialTodos
+    // }
 
-    handleToggle = (id) => {
-        const { todos } = this.state;
-        const index = todos.findIndex(todo => todo.id ===id);
+    // id = 1;
+    // getId = () =>{
+    //     return ++this.id;
+    // }
 
-        const toggled = {
-            ...todos[index],
-            done: !todos[index].done
-        };
+    // handleToggle = (id) => {
+    //     const { todos } = this.state;
+    //     const index = todos.findIndex(todo => todo.id ===id);
 
-        this.setState({
-            todos: [
-                ...todos.slice(0, index),
-                toggled,
-                ...todos.slice(index+1, todos.length)
-            ]
-        });
-    }
+    //     const toggled = {
+    //         ...todos[index],
+    //         done: !todos[index].done
+    //     };
 
-    handleChange = (e) =>{
-        const {value} = e.target;
-        this.setState({
-            input: value
-        });
-    }
+    //     this.setState({
+    //         todos: [
+    //             ...todos.slice(0, index),
+    //             toggled,
+    //             ...todos.slice(index+1, todos.length)
+    //         ]
+    //     });
+    // }
 
-    handleInsert = () =>{
-        const {todos, input} = this.state;
+    // handleChange = (e) =>{
+    //     const {value} = e.target;
+    //     this.setState({
+    //         input: value
+    //     });
+    // }
 
-        const newTodo = {
-            text: input,
-            done: false,
-            id: this.getId()
-        };
+    // handleInsert = () =>{
+    //     const {todos, input} = this.state;
 
-        this.setState({
-            todos: [...todos, newTodo],
-            input: ''
-        });
-    }
+    //     const newTodo = {
+    //         text: input,
+    //         done: false,
+    //         id: this.getId()
+    //     };
 
-    handleRemove = (id) => {
-        const {todos} = this.state;
-        const index = todos.findIndex(todo => todo.id === id);
+    //     this.setState({
+    //         todos: [...todos, newTodo],
+    //         input: ''
+    //     });
+    // }
 
-        this.setState({
-            todos:[
-                ...todos.slice(0,index),
-                ...todos.slice(index+1, todos.length)
-            ]
-        });
-    }
+    // handleRemove = (id) => {
+    //     const {todos} = this.state;
+    //     const index = todos.findIndex(todo => todo.id === id);
 
-    render(){
-        const {input, todos} = this.state;
-        const {
-            handleChange,
-            handleInsert,
-            handleToggle,
-            handleRemove
-        } = this;
+    //     this.setState({
+    //         todos:[
+    //             ...todos.slice(0,index),
+    //             ...todos.slice(index+1, todos.length)
+    //         ]
+    //     });
+    //  }
+    //     const {input, todos, id} = this.state;
 
-
+    //     const {
+    //         handleChange,
+    //         handleInsert,
+    //         handleToggle,
+    //         handleRemove
+    //     } = this;
         return (
             <div>
                 <PageTemplate>
-                    <TodoInput onChange={handleChange} onInsert={handleInsert} value={input}/>
+                    <TodoInput Input onChange={handleChange} onInsert={handleInsert} value={input}/>
                     <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
                 </PageTemplate>
             </div>
         );
-    }
 }
 
 export default App;

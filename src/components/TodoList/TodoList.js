@@ -5,9 +5,9 @@ class TodoList extends Component {
   shouldComponentUpdate(nextProps, nextState){
     return this.props.todos !== nextProps.todos;
   }
-  
   render(){
     const { todos, onToggle, onRemove } = this.props;
+    console.log(todos);
     const todoList = todos.map(
       todo=>(
         <TodoItem
@@ -19,7 +19,6 @@ class TodoList extends Component {
         </TodoItem>
       )
     );
-
     return (
       <div>
         {todoList}
