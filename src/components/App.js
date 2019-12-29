@@ -7,7 +7,7 @@ import TodoList from './TodoList';
 //      (foo, index)=>({id: index, text: `Todo ${index}`, done: false})
 //  );
 
-const App = ({input, todos, id, handleChange, handleInsert, handleRemove, handleToggle}) =>{
+const App = ({input, todos, handleChange, handleInsert, handleRemove, handleToggle}) =>{
 
     // state = {
     //     input: '',

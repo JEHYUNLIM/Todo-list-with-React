@@ -7,7 +7,7 @@ const initialTodos = new Array(5).fill(0).map(
 const initialState = {
     input: '',
     todos: initialTodos,
-    id: 1
+    id: 5
 }
 
 const todoReducer = (state=initialState, action) => {
@@ -26,15 +26,11 @@ const todoReducer = (state=initialState, action) => {
                 input: input,
                 id: id
             }
-        case types.INCREMENT:
-            return {
-                id: id+1
-            }
         case types.CHANGE:
             return {
-                ...todos,
-                ...id,
-                input: action.value
+                todos: todos,
+                id: id,
+                input: action.value.value
             }
         case types.INSERT:
             return {

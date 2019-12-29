@@ -18,7 +18,3 @@ export const toggleTodo = (id) => ({
     type: types.TOGGLE,
     id
 })
-
-export const incrementId = () => ({
-    type: types.INCREMENT
-})
